@@ -1,1 +1,31 @@
-
+class Main {
+    public static int countUniqueDigits(int input) {
+        // Create array to mark digits found
+        boolean[] digits = new boolean[10];  // 0 to 9
+        
+        // Convert negative numbers to positive
+        input = Math.abs(input);
+        
+        // Handle zero case
+        if (input == 0) {
+            return 1;  // Only one digit: 0
+        }
+        
+        // Extract each digit and mark it in array
+        while (input > 0) {
+            int digit = input % 10;
+            digits[digit] = true;  // Mark this digit as found
+            input = input / 10;
+        }
+        
+        // Count how many unique digits were found
+        int count = 0;
+        for (boolean found : digits) {
+            if (found) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
