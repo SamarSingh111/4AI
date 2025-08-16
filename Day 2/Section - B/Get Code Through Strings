@@ -1,1 +1,38 @@
-
+class Main {
+    public static int getCodeThroughString(String input) {
+        // Handle null or empty string
+        if (input == null || input.isEmpty()) {
+            return 0;
+        }
+        
+        // Convert to uppercase to handle both cases
+        input = input.toUpperCase();
+        
+        int sum = 0;
+        // Process each character
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            // Only process alphabets
+            if (c >= 'A' && c <= 'Z') {
+                // Get position value (A=1, B=2, ..., Z=26)
+                int value = c - 'A' + 1;
+                // Add value to sum
+                sum += value;
+            }
+        }
+        
+        // Return the final code
+        return sum;
+    }
+    
+    // Helper method to process string and get code
+    public static int processString(String str) {
+        // Remove spaces and special characters
+        str = str.replaceAll("[^a-zA-Z]", "");
+        
+        // Get the code
+        int code = getCodeThroughString(str);
+        
+        return code;
+    }
+}
