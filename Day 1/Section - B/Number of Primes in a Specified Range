@@ -1,1 +1,27 @@
-
+class Main {
+    public static boolean isPrime(int num) {
+        // Check if number is prime
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+    
+    public static int countPrimesInRange(int start, int end) {
+        // Validate input range
+        if (start < 2 || end > 7919 || start > end) {
+            return 0;
+        }
+        
+        int count = 0;
+        // Check each number in the range
+        for (int num = start; num <= end; num++) {
+            if (isPrime(num)) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
