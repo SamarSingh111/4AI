@@ -1,1 +1,31 @@
-
+class Main {
+    public static int countNonRepeatedDigits(int input) {
+        // Create array to count occurrences of each digit
+        int[] digitCount = new int[10];  // 0 to 9
+        
+        // Convert negative numbers to positive
+        input = Math.abs(input);
+        
+        // Handle zero case
+        if (input == 0) {
+            return 1;  // Zero appears once
+        }
+        
+        // Count occurrences of each digit
+        while (input > 0) {
+            int digit = input % 10;
+            digitCount[digit]++;
+            input = input / 10;
+        }
+        
+        // Count digits that appear exactly once
+        int nonRepeatedCount = 0;
+        for (int count : digitCount) {
+            if (count == 1) {
+                nonRepeatedCount++;
+            }
+        }
+        
+        return nonRepeatedCount;
+    }
+}
