@@ -1,1 +1,35 @@
-
+class Main {
+    public static int createPIN(int input1, int input2, int input3) {
+        // Validate input ranges (100-999)
+        if (input1 < 100 || input1 > 999 || 
+            input2 < 100 || input2 > 999 || 
+            input3 < 100 || input3 > 999) {
+            return -1;
+        }
+        
+        // Get individual digits for units position
+        int units1 = input1 % 10;
+        int units2 = input2 % 10;
+        int units3 = input3 % 10;
+        
+        // Get individual digits for tens position
+        int tens1 = (input1 / 10) % 10;
+        int tens2 = (input2 / 10) % 10;
+        int tens3 = (input3 / 10) % 10;
+        
+        // Get individual digits for hundreds position
+        int hundreds1 = input1 / 100;
+        int hundreds2 = input2 / 100;
+        int hundreds3 = input3 / 100;
+        
+        // Find the required digits for PIN
+        int thousandsDigit = Math.max(Math.max(Math.max(Math.max(Math.max(Math.max(Math.max(Math.max(
+                           hundreds1, hundreds2), hundreds3), tens1), tens2), tens3), units1), units2), units3);
+        int hundredsDigit = Math.min(Math.min(hundreds1, hundreds2), hundreds3);
+        int tensDigit = Math.min(Math.min(tens1, tens2), tens3);
+        int unitsDigit = Math.min(Math.min(units1, units2), units3);
+        
+        // Combine digits to form PIN
+        return thousandsDigit * 1000 + hundredsDigit * 100 + tensDigit * 10 + unitsDigit;
+    }
+}
