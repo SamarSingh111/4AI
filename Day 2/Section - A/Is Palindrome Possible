@@ -1,1 +1,23 @@
-
+class Main {
+    public static int isPalindromePossible(int input1) {
+        if (input1 < 1 || input1 > 25000) {
+            return 1;
+        }
+        
+        int[] digitCount = new int[10];
+        int num = input1;
+        while (num > 0) {
+            digitCount[num % 10]++;
+            num /= 10;
+        }
+        
+        int oddCount = 0;
+        for (int count : digitCount) {
+            if (count % 2 != 0) {
+                oddCount++;
+            }
+        }
+        
+        return (oddCount <= 1) ? 2 : 1;
+    }
+}
